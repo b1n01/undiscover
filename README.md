@@ -16,9 +16,9 @@ Your local copy of the blog will be served on [http://localhost:3000](http://loc
 
 This monorepo holds three main components:
 
-- The blog frontend built with [https://nextjs.org/](Next.js)
-- The blog backend and database built with [https://strapi.io/](Strapi)
-- The dev environment handled by [https://www.docker.com/](Docker)
+- The blog frontend built with [Next.js](https://nextjs.org/)
+- The blog backend and database built with [Strapi](https://strapi.io/)
+- The dev environment handled by [Docker](https://www.docker.com/)
 
 ### Folder structures
 

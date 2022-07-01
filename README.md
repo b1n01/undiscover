@@ -25,7 +25,6 @@ This monorepo holds three main components:
 ```
 | blog/                <-- Next.js app
 | cms/                 <-- Strapi backend
-| docker/              <-- Docker files
 | docker-compose.yml   <-- Docker compose
 ```
 
@@ -43,3 +42,6 @@ docker logs undiscover-cms
 ```
 
 ## Deploy
+
+## Note
+[Yarn](https://yarnpkg.com/) is used for both blog and cms as suggested by the Stripe documentation.

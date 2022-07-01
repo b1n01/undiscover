@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+
+  cms:
+    container_name: undiscover-cms
+    image: undiscover-cms
+    build: ./cms/
+    ports:
+      - "1337:1337"
+    volumes:
+      # SQLite data
+      - ./cms/database/data:/srv/app/.tmp
+      # Source folders
+      - ./cms/config:/srv/app/config
+      - ./cms/src:/srv/app/src
+      - ./cms/.env:/srv/app/.env
+      # Dependencies stuff
+      - ./cms/package.json:/srv/package.json
+      - ./cms/yarn.lock:/srv/yarn.lock 
+
+#  blog:
+#    container_name: undiscover-blog
+#    build: ./docker/blog/
+#    port:
+#      - "3000:3000"

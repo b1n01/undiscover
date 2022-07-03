@@ -8,15 +8,7 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      # SQLite data
-      - ./cms/database/data:/srv/app/.tmp
-      # Source folders
-      - ./cms/config:/srv/app/config
-      - ./cms/src:/srv/app/src
-      - ./cms/.env:/srv/app/.env
-      # Dependencies stuff
-      - ./cms/package.json:/srv/package.json
-      - ./cms/yarn.lock:/srv/yarn.lock 
+      - ./cms:/srv/app
 
 #  blog:
 #    container_name: undiscover-blog

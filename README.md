@@ -12,6 +12,13 @@ docker-compose up -d
 
 Your local copy of the blog will be served on [http://localhost:3000](http://localhost:3000). Visit [http://localhost:1337](http://localhost:1337) to access the cms admin page.
 
+## Credentials
+The SQLite Stripe database is committed in the repo, so the default user is too: 
+
+- email: b1n01@undiscover.it
+- password: Undiscover-b1n01
+- api token: 6dd8fb4c979f376c83c8e376b5ec10bcf15252ec343e3831d5d7a20b6ea8d1249a6651395fd92d886860d1d045c251e6d3a93e2c408005e69a94dbb291b9bd20791e772d230605699446569ef682b330a04d9abd4e97d2abe6b7f7b8636be5a9c44201ecc28d8c4a78b84b23dd57e52b180b8e26a15a40bd983531b190a9bf95
+
 ## Overview
 
 This monorepo holds three main components:

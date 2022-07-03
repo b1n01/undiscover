@@ -10,8 +10,11 @@ services:
     volumes:
       - ./cms:/srv/app
 
-#  blog:
-#    container_name: undiscover-blog
-#    build: ./docker/blog/
-#    port:
-#      - "3000:3000"
+  blog:
+    container_name: undiscover-blog
+    image: undiscover-blog
+    build: ./blog/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./blog:/srv/app

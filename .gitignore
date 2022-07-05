@@ -43,7 +43,6 @@ build
 
 # Next.js
 .next
-out
 .vercel
 
 # Local env files

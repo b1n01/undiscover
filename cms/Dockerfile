@@ -4,25 +4,25 @@ FROM node:16-slim
 RUN apt-get update && apt-get install libvips-dev -y
 
 # Set node env variale with develop as default
-#ARG NODE_ENV=development
-#ENV NODE_ENV=${NODE_ENV}
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /srv
+WORKDIR /src
 
-# Copy file to install node modules
-COPY ./package.json ./yarn.lock ./
+# Copy file to install node es
+COPY ./package.json ./yarn.lock .
 
 # Add node modules binaries to PATH to access
-# them from within the /srv/app folder
-ENV PATH /srv/node_modules/.bin:$PATH
+# them from within the /src/app folder
+ENV PATH /src/node_modules/.bin:$PATH
 
 # Install dependencies
 RUN yarn install
 
 # Move to the app folder
-WORKDIR /srv/app
+WORKDIR /src/app
 
-# Copy everithing (except for .dockerignore files, like node_modules)
+# Copy source folder
 COPY . .
 
 # Build Strapi admin panel

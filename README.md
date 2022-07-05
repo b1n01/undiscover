@@ -7,7 +7,7 @@ Undiscover is my secret drawer, where I put my favorite songs.
 Spin up the environment with:
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 Your local copy of the blog will be served on [http://localhost:3000](http://localhost:3000). Visit [http://localhost:1337](http://localhost:1337) to access the cms admin page.
@@ -57,6 +57,18 @@ docker logs undiscover-cms
 ```
 
 ## Deploy
+
+To prepare the repo to be released run:
+
+```bash
+docker exec undiscover-blog yarn run publish
+```
+
+Now you can commit and push with:
+
+```bash
+git commit -am "Build" && git push
+```
 
 ## Note
 [Yarn](https://yarnpkg.com/) is used for both blog and cms as suggested by the Stripe documentation.

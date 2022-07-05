@@ -4,7 +4,7 @@ function Albums ({ albums }) {
 	return (
     	<ul>
       		{albums.map((album) => (
-        		<li>{album.attributes.name} | {album.id}</li>
+        		<li key={album.id}>{album.attributes.name} | {album.id}</li>
       		))}
     	</ul>
   	)

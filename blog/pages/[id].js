@@ -20,8 +20,6 @@ export async function getStaticProps({ params }) {
   	const res = await get(`/albums/${params.id}`)
   	const album = (await res.json()).data
 
-	console.log("Album:", album)
-
   	return { props: { album } }
 }
 

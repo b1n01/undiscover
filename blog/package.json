@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "publish": "next build && cp -r .next build"
+    "publish": "next build && next export"
   },
   "dependencies": {
     "next": "12.2.0",

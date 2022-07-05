@@ -38,7 +38,7 @@ coverage
 license.txt
 exports
 *.cache
-/cms/build
+build
 .strapi-updater.json
 
 # Next.js

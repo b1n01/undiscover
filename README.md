@@ -67,7 +67,7 @@ docker exec undiscover-blog yarn run publish
 Now you can commit and push with:
 
 ```bash
-git commit -am "Build" && git push
+git add blog/out && git commit -m "Build" && git push
 ```
 
 ## Note

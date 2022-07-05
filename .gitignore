@@ -38,12 +38,12 @@ coverage
 license.txt
 exports
 *.cache
-build
+/cms/build
 .strapi-updater.json
 
 # Next.js
-/.next/
-/out/
+.next
+out
 .vercel
 
 # Local env files

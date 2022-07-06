@@ -1,6 +1,6 @@
 import { get } from 'lib/api.js'
 
-function Album ({ album }) {
+export default function Album({ album }) {
 	return <p>Here an album {album.attributes.name}</p>
 }
 
@@ -22,5 +22,3 @@ export async function getStaticProps({ params }) {
 
   	return { props: { album } }
 }
-
-export default Album

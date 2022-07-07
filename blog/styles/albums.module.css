@@ -1,0 +1,26 @@
+.list {
+	margin: 0;
+	padding: 0 0 0 15px;
+}
+
+.link {
+	text-decoration: none;
+	color: black;
+	font-size: 16px;
+}
+
+.info {
+	font-size: 12px;
+	color: rgba(0, 0, 0, .5);
+}
+
+.album:hover .info { 
+	color: black;
+}
+
+.hyphen {
+ 	height: 5px;
+    width: 20px;
+    display: inline-block;
+    margin: 2px 10px;
+ }

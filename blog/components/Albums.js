@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import style from 'styles/albums.module.css'
 
 // Format date based on locale IT
 function formatDate(date) {
@@ -23,13 +24,17 @@ function getEmoji(length) {
 
 export default function Albums({ albums }) {
 	return (
-    	<ul>
-      		{albums.map((album) => (
-        		<li key={album.id}>
-					<Link href={album.id.toString()}>
-						<a>
-							<div>{album.attributes.author}<span> - </span>{album.attributes.name}</div>
+    	<ul className={ style.list }>
+      		{albums.map(( album ) => (
+        		<li className={ style.album } key={ album.id }>
+					<Link href={ album.id.toString() }>
+						<a className={ style.link }>
 							<div>
+								{album.attributes.author}
+								<span className={ style.hyphen } style={{ backgroundColor: album.attributes.background_color }}></span>
+								{album.attributes.name}
+							</div>
+							<div className={ style.info }>
 								postato il {formatDate(album.attributes.publishedAt)} |
 								ascolto di {album.attributes.length} minuti {getEmoji(album.attributes.length)}
 							</div>

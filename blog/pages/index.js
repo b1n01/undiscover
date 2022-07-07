@@ -6,7 +6,7 @@ export default function Index ({ albums }) {
 }
 
 export async function getStaticProps() {
-	const res = await get('/albums')
+	const res = await get('/albums?sort=createdAt:desc')
 	const json = await res.json()
 	const albums = json.data
 

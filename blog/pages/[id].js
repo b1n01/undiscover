@@ -1,7 +1,7 @@
 import { get } from 'lib/api.js'
 
 export default function Album({ album }) {
-	return <p>Here an album {album.attributes.name}</p>
+	return <p>{album.attributes.name}</p>
 }
 
 export async function getStaticPaths() {
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 	const albums = (await res.json()).data
 	
 	const paths = albums.map((album) => ({
-		params: { id: album.id.toString() },
+		params: { id: album.attributes.slug }
   	}))
 	
   	// { fallback: false } means other routes should 404
@@ -17,8 +17,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  	const res = await get(`/albums/${params.id}`)
-  	const album = (await res.json()).data
+  	const res = await get(`/albums?filters[slug]=${params.id}`)
+  	const albums = (await res.json()).data
+
+	if (albums.length !== 1) {
+		return { notFound: true };
+	}
+
+	const album = albums.shift()
 
   	return { props: { album } }
 }

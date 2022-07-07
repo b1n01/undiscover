@@ -27,11 +27,14 @@ export default function Albums({ albums }) {
     	<ul className={ style.list }>
       		{albums.map(( album ) => (
         		<li className={ style.album } key={ album.id }>
-					<Link href={ album.id.toString() }>
+					<Link href={ album.attributes.slug }>
 						<a className={ style.link }>
 							<div>
 								{album.attributes.author}
-								<span className={ style.hyphen } style={{ backgroundColor: album.attributes.background_color }}></span>
+								<span 
+									className={ style.hyphen }
+									style={{ backgroundColor: album.attributes.background_color }}>
+								</span>
 								{album.attributes.name}
 							</div>
 							<div className={ style.info }>

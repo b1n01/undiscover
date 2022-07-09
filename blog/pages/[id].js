@@ -1,7 +1,8 @@
 import { get } from 'lib/api.js'
+import Album from 'components/album'
 
-export default function Album({ album }) {
-	return <p>{album.attributes.name}</p>
+export default function Page({ album }) {
+	return <Album data={ album } />
 }
 
 export async function getStaticPaths() {
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  	const res = await get(`/albums?filters[slug]=${params.id}`)
+  	const res = await get(`/albums?populate=cover&filters[slug]=${params.id}`)
   	const albums = (await res.json()).data
 
 	if (albums.length !== 1) {

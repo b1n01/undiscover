@@ -1,7 +1,7 @@
 import { get } from 'lib/api'
 import Albums from 'components/albums'
 
-export default function Index ({ albums }) {
+export default function Page ({ albums }) {
 	return <Albums albums={albums} />
 }
 

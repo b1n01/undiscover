@@ -1,6 +1,7 @@
 import Image from "next/image";
 import style from "styles/album.module.css";
-var md = require("markdown-it")();
+import mdIt from "markdown-it";
+const md = mdIt();
 
 export default function Album({ data }) {
 	const album = data.attributes;

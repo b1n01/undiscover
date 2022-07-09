@@ -1,5 +1,5 @@
-import Nav from 'components/nav'
-import style from 'styles/layout.module.css'
+import Nav from "components/nav";
+import style from "styles/layout.module.css";
 
 export default function Layout({ children }) {
 	return (
@@ -7,5 +7,5 @@ export default function Layout({ children }) {
 			<Nav />
 			{children}
 		</div>
-	)
+	);
 }

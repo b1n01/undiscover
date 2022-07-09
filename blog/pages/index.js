@@ -1,14 +1,14 @@
-import { get } from 'lib/api'
-import Albums from 'components/albums'
+import { get } from "lib/api";
+import Albums from "components/albums";
 
-export default function Page ({ albums }) {
-	return <Albums albums={albums} />
+export default function Page({ albums }) {
+	return <Albums albums={albums} />;
 }
 
 export async function getStaticProps() {
-	const res = await get('/albums?sort=createdAt:desc')
-	const json = await res.json()
-	const albums = json.data
+	const res = await get("/albums?sort=createdAt:desc");
+	const json = await res.json();
+	const albums = json.data;
 
-	return { props: { albums } }
+	return { props: { albums } };
 }

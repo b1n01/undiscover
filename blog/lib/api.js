@@ -2,10 +2,15 @@
 const get = (path, options) => {
 	return fetch(process.env.API_ENDPOINT + path, {
 		headers: new Headers({
-			'Authorization': 'Bearer ' + process.env.API_TOKEN,
+			Authorization: "Bearer " + process.env.API_TOKEN,
 		}),
-		...options
-	})
+		...options,
+	});
+};
+
+// Implements Next.js Image loader, @see https://nextjs.org/docs/api-reference/next/image#loader
+function getImageUrl({ src }) {
+	return process.env.NEXT_PUBLIC_API_ENDPOINT + src;
 }
 
-export { get }
+export { get, getImageUrl };

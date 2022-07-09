@@ -1,1 +1,15 @@
+.hero {
+}
 
+.heroContent {
+	margin: 0 auto;
+	max-width: 900;
+}
+
+.image {
+	width: 50%;
+	max-width: 600px;
+	min-height: 300px;
+	position: relative;
+	object-fit: cover;
+}

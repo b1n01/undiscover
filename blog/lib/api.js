@@ -1,16 +1,14 @@
 // Wrapper for fetch api with prefilled api endpoint and token
-const get = (path, options) => {
-	return fetch(process.env.API_ENDPOINT + path, {
+const get = (pathName) => {
+	const base = process.env.API_ENDPOINT.replace(/\/+$/, ""); // remove trailing slash
+	const path = pathName.replace(/^\/+/, ""); // remove leading slash
+	const url = base + "/" + path;
+
+	return fetch(url, {
 		headers: new Headers({
 			Authorization: "Bearer " + process.env.API_TOKEN,
 		}),
-		...options,
 	});
 };
 
-// Implements Next.js Image loader, @see https://nextjs.org/docs/api-reference/next/image#loader
-function getImageUrl({ src, width }) {
-	return process.env.NEXT_PUBLIC_API_ENDPOINT + src;
-}
-
-export { get, getImageUrl };
+export { get };

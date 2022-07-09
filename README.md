@@ -1,6 +1,6 @@
 # Undiscover
 
-Undiscover is my secret drawer, where I put my favorite songs.
+Undiscover is my secret drawer, where I put my favorite songs. Or in other words the blog where sometimes I post some music that I particularly like, here a live version: [undiscover.it](https://undiscover.it).
 
 ## <a name="getting-started" />Getting started
 
@@ -10,7 +10,14 @@ Spin up the environment with:
 docker-compose up
 ```
 
-Your local copy of the blog will be served on [http://localhost:3000](http://localhost:3000). Visit [http://localhost:1337](http://localhost:1337) to access the cms admin page.
+The local copy of the blog will be served on [http://localhost:3000](http://localhost:3000) and the cms admin page on [http://localhost:1337/admin](http://localhost:1337/admin) (use [default credentials](#credentials) to login).
+
+### Credentials<a name="credentials" />
+
+Default credential to access the [cms admin page](http://localhost:1337/admin) are:
+
+- email: b1n01@undiscover.it
+- password: B1n01@undiscover
 
 ## Overview
 
@@ -28,32 +35,21 @@ This monorepo holds three main components:
 | docker-compose.yml   <-- Docker compose
 ```
 
-## Credentials
-
-The SQLite Stripe database is committed in the repo, so the default user and api token are too:
-
--   email: b1n01@undiscover.it
--   password: Undiscover-b1n01
-
-You can use the mail and password to access the Stripe dashboard, and the api token to query data from the
-`/api/` endpoint.
-
 ### Database
 
 SQLite is used as database, and it's file is stored in `{REPO-PATH}/cms/database/data/data.db`. This file is committed in this repository, to drop all existing content (data and authentication) simply delete it it.
-
-## Development
-
-First run your local servers as described in the [Getting Started](#getting-started) section. Now both the Next.js app and the Strapi backend are watching for changes.
 
 ### Logs
 
 To access logs use the docker built-in logs function:
 
 ```bash
-docker logs undiscover-blog
-docker logs undiscover-cms
+docker-compose logs -f
 ```
+
+### Images
+
+Next.js handles images (and images optimization) only when it's server is running, but this repo only generates static content. In order to correctly serve and build the blog the `images.unoptimized` flag is set to true in `next.config.js` and the uploads folder from the Strapi container is mounted in the public folder on the Next.js docker container in `docker-compose.yml`.
 
 ## Deploy
 
@@ -69,6 +65,16 @@ Now you can commit and push with:
 git add blog/out && git commit -m "Build" && git push
 ```
 
-## Note
+## Fork this repo
 
-[Yarn](https://yarnpkg.com/) is used for both blog and cms as suggested by the Stripe documentation.
+In order to use this repo as template to build your own version, you need to delete SQLite database from `{REPO-PATH}/cms/database/data/data.db` and the Strapi uploads files from `{REPO-PATH}/cms/public/uploads/`:
+
+```bash
+rm ./cms/database/data/data.db
+find ./cms/public/uploads/ -type f -not -name '.gitkeep' -delete
+```
+
+Then visit the [Strapi dashboard](http://localhost:1337) to create a new user. 
+
+To deploy the repo use your favorite deployment platform and serve the `{REPO-PATH}/blog/out` folder. 
+Enjoy 🎉.

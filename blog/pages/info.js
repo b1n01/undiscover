@@ -2,7 +2,7 @@ import style from "styles/info.module.css";
 
 export default function Info() {
 	return (
-		<>
+		<div className={style.info}>
 			<p>
 				Undiscover è un cassetto dove metto i miei album preferiti. Nel
 				senso che ogni volta che &quot;wow questo è il mio nuovo album
@@ -23,6 +23,6 @@ export default function Info() {
 				mostrare supporto o fare domande rivolgiti a loro, puoi trovare
 				riferimenti utili nelle pagine degli album.
 			</p>
-		</>
+		</div>
 	);
 }

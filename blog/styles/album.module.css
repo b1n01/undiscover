@@ -1,15 +1,57 @@
 .hero {
+	overflow: auto; /* prevent margin from collapsing */
 }
 
-.heroContent {
-	margin: 0 auto;
-	max-width: 900;
+.info {
+	margin-top: 15px;
+	/* text-align: center; */
+}
+
+.info > div {
+	font-size: 16px;
+	margin-top: 15px;
+}
+
+.info > .album {
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.info > .author {
+	margin-top: 10px;
 }
 
 .image {
-	width: 50%;
-	max-width: 600px;
-	min-height: 300px;
-	position: relative;
-	object-fit: cover;
+	margin-top: 25px;
+	/* border: 3px solid black; */
+}
+
+.player {
+	margin-top: 15px;
+}
+
+.description {
+	margin-top: 25px;
+	text-align: justify;
+	line-height: 1.75;
+	font-size: 14px;
+}
+
+.description > ul {
+	margin: 0;
+	padding-left: 15px;
+}
+
+.description a {
+	color: black;
+}
+
+@media screen and (min-width: 600px) {
+	.hero {
+	}
+	.info {
+	}
+
+	.image {
+	}
 }

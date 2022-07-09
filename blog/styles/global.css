@@ -1,4 +1,5 @@
 body {
 	font-family: "Courier Prime", monospace;
 	margin: 0;
+	min-width: 350px;
 }

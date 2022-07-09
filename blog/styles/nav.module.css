@@ -12,6 +12,11 @@
 	padding: 0;
 }
 
+.title a {
+	color: black;
+	text-decoration: none;
+}
+
 .options {
 	display: flex;
 	margin: 0 0 0 auto;

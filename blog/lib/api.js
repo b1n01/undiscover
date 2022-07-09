@@ -9,7 +9,7 @@ const get = (path, options) => {
 };
 
 // Implements Next.js Image loader, @see https://nextjs.org/docs/api-reference/next/image#loader
-function getImageUrl({ src }) {
+function getImageUrl({ src, width }) {
 	return process.env.NEXT_PUBLIC_API_ENDPOINT + src;
 }
 

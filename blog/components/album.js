@@ -1,4 +1,3 @@
-import { getImageUrl } from "lib/api";
 import Image from "next/image";
 import style from "styles/album.module.css";
 var md = require("markdown-it")();
@@ -8,10 +7,7 @@ export default function Album({ data }) {
 	const cover = album.cover.data.attributes;
 
 	return (
-		<div
-			className={style.hero}
-			// style={{ backgroundColor: album.background_color }}
-		>
+		<div className={style.hero}>
 			<div className={style.info}>
 				<div className={style.album}>
 					<span>{album.author}</span> <span>/ {album.name}</span>
@@ -22,7 +18,6 @@ export default function Album({ data }) {
 			</div>
 			<div className={style.image}>
 				<Image
-					loader={getImageUrl}
 					src={cover.url}
 					alt={cover.alternativeText}
 					layout="responsive"

@@ -9,33 +9,50 @@ export default function Album({ data }) {
 
 	return (
 		<div className={style.hero}>
-			<div className={style.info}>
-				<div className={style.album}>
-					<span>{album.author}</span> <span>/ {album.name}</span>
-				</div>
-				<div className={style.label}>
-					{album.label}, {album.release_year}
-				</div>
+			<div className={style.title}>
+				{album.author} / {album.name}
 			</div>
-			<div className={style.image}>
-				<Image
+			<div className={style.subtitle}>
+				{album.label}, {album.release_year}
+			</div>
+			<div
+				style={{
+					backgroundColor: album.background_color,
+				}}
+				className={style.coverWrapper}
+			>
+				<div className={style.cover}>
+					<Image
+						src={cover.url}
+						alt={cover.alternativeText}
+						layout="fill"
+						objectFit="cover"
+						width="600"
+						height="600"
+					/>
+					{/* <div>
+				<img
+					className={style.cover}
 					src={cover.url}
 					alt={cover.alternativeText}
-					layout="responsive"
-					width="600"
-					height="600"
+					// width="600"
+					// height="600"
+				/>
+			</div> */}
+				</div>
+			</div>
+			<div className={style.info}>
+				<div
+					className={style.player}
+					dangerouslySetInnerHTML={{ __html: album.player }}
+				/>
+				<div
+					className={style.description}
+					dangerouslySetInnerHTML={{
+						__html: md.render(album.description),
+					}}
 				/>
 			</div>
-			<div
-				className={style.player}
-				dangerouslySetInnerHTML={{ __html: album.player }}
-			></div>
-			<div
-				className={style.description}
-				dangerouslySetInnerHTML={{
-					__html: md.render(album.description),
-				}}
-			></div>
 		</div>
 	);
 }

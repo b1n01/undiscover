@@ -1,11 +1,18 @@
+
+import { useState } from "react";
 import Image from "next/image";
 import style from "styles/album.module.css";
 import mdIt from "markdown-it";
 const md = mdIt();
 
+function getCoverClass (isOpen) {
+	return isOpen ? [style.cover, style.open].join(" ") : style.cover;
+}
+
 export default function Album({ data }) {
 	const album = data.attributes;
 	const cover = album.cover.data.attributes;
+	const [isOpen, setOpen] = useState(false);
 
 	return (
 		<div className={style.hero}>
@@ -15,31 +22,18 @@ export default function Album({ data }) {
 			<div className={style.subtitle}>
 				{album.label}, {album.release_year}
 			</div>
-			<div
-				style={{
-					backgroundColor: album.background_color,
-				}}
-				className={style.coverWrapper}
+			<div 
+				className={getCoverClass(isOpen)}
+				onClick={() => setOpen(!isOpen)}
 			>
-				<div className={style.cover}>
-					<Image
-						src={cover.url}
-						alt={cover.alternativeText}
-						layout="fill"
-						objectFit="cover"
-						width="600"
-						height="600"
-					/>
-					{/* <div>
-				<img
-					className={style.cover}
+				<Image
 					src={cover.url}
 					alt={cover.alternativeText}
-					// width="600"
-					// height="600"
+					layout="fill"
+					objectFit="cover"
+					width="600"
+					height="600"
 				/>
-			</div> */}
-				</div>
 			</div>
 			<div className={style.info}>
 				<div

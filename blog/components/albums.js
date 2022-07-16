@@ -25,26 +25,24 @@ function getEmoji(length) {
 export default function Albums({ albums }) {
 	return (
 		<ul className={style.list}>
-			{albums.map((album) => (
-				<li className={style.album} key={album.id}>
-					<Link href={album.attributes.slug}>
+			{albums.map(({id, attributes: album}) => (
+				<li className={style.album} key={id}>
+					<Link href={album.slug}>
 						<a className={style.link}>
 							<div>
-								{album.attributes.author}
+								{album.author}
 								<span
 									className={style.hyphen}
 									style={{
 										backgroundColor:
-											album.attributes.background_color,
+											album.background_color,
 									}}
 								></span>
-								{album.attributes.name}
+								{album.name}
 							</div>
 							<div className={style.info}>
-								postato il{" "}
-								{formatDate(album.attributes.publishedAt)} |
-								ascolto di {album.attributes.length} minuti{" "}
-								{getEmoji(album.attributes.length)}
+								postato il {formatDate(album.publishedAt)} |
+								ascolto di {album.length} minuti {getEmoji(album.length)}
 							</div>
 						</a>
 					</Link>

@@ -5,6 +5,7 @@ import mdIt from "markdown-it";
 const md = mdIt();
 
 // Listen to window resize and return the cover height
+// to ensure the cover is squared
 function useCoverHeight(coverRef, defaultHeight) {
 	const [height, setHeight] = useState(defaultHeight);
 
@@ -14,8 +15,8 @@ function useCoverHeight(coverRef, defaultHeight) {
 			setHeight(newHeight);
 		};
 
+		// Call the first time manually
 		handleResize();
-
 		window.addEventListener("resize", handleResize);
 
 		return () => window.removeEventListener("resize", handleResize);

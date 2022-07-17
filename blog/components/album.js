@@ -4,14 +4,15 @@ import style from "styles/album.module.css";
 import mdIt from "markdown-it";
 const md = mdIt();
 
+// Listen to window resize and return the cover height
 function useCoverHeight(coverRef, defaultHeight) {
 	const [height, setHeight] = useState(defaultHeight);
 
 	useEffect(() => {
 		const handleResize = () => {
 			const newHeight = coverRef.current.clientWidth;
-			setHeight(newHeight)
-		}
+			setHeight(newHeight);
+		};
 
 		handleResize();
 
@@ -40,7 +41,7 @@ export default function Album({ data }) {
 			<div className={style.subtitle}>
 				{album.label}, {album.release_year}
 			</div>
-			<div 
+			<div
 				className={style.cover}
 				ref={coverRef}
 				style={{

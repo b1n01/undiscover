@@ -29,6 +29,10 @@
 	margin-top: 15px;
 }
 
+.player {
+	margin-right: 1px;
+}
+
 .description {
 	text-align: justify;
 	line-height: 1.75;

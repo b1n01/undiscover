@@ -1,18 +1,36 @@
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import style from "styles/album.module.css";
 import mdIt from "markdown-it";
 const md = mdIt();
 
-function getCoverClass (isOpen) {
-	return isOpen ? [style.cover, style.open].join(" ") : style.cover;
+function getCoverHeight(coverRef, defaultHeight) {
+	const [height, setHeight] = useState(defaultHeight);
+
+	useEffect(() => {
+		const handleResize = () => {
+			const newHeight = coverRef.current.clientWidth;
+			setHeight(newHeight)
+		}
+
+		handleResize();
+
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	});
+
+	return height;
 }
 
 export default function Album({ data }) {
 	const album = data.attributes;
 	const cover = album.cover.data.attributes;
 	const [isOpen, setOpen] = useState(false);
+
+	const coverRef = useRef();
+	const defaultHeight = 300;
+	const height = getCoverHeight(coverRef, defaultHeight);
 
 	return (
 		<div className={style.hero}>
@@ -23,7 +41,12 @@ export default function Album({ data }) {
 				{album.label}, {album.release_year}
 			</div>
 			<div 
-				className={getCoverClass(isOpen)}
+				className={style.cover}
+				ref={coverRef}
+				style={{
+					height: isOpen ? height : defaultHeight,
+					filter: isOpen ? "grayscale(0)" : "grayscale(1)",
+				}}
 				onClick={() => setOpen(!isOpen)}
 			>
 				<Image
@@ -31,8 +54,6 @@ export default function Album({ data }) {
 					alt={cover.alternativeText}
 					layout="fill"
 					objectFit="cover"
-					width="600"
-					height="600"
 				/>
 			</div>
 			<div className={style.info}>

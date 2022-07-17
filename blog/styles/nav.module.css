@@ -2,7 +2,7 @@
 	text-transform: uppercase;
 	display: flex;
 	align-items: center;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 }
 
 .title {
@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 600px) {
 	.nav {
-		margin-bottom: 30px;
+		margin-bottom: 45px;
 	}
 
 	.options > * {

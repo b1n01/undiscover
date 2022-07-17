@@ -4,7 +4,7 @@ import style from "styles/album.module.css";
 import mdIt from "markdown-it";
 const md = mdIt();
 
-function getCoverHeight(coverRef, defaultHeight) {
+function useCoverHeight(coverRef, defaultHeight) {
 	const [height, setHeight] = useState(defaultHeight);
 
 	useEffect(() => {
@@ -30,7 +30,7 @@ export default function Album({ data }) {
 
 	const coverRef = useRef();
 	const defaultHeight = 300;
-	const height = getCoverHeight(coverRef, defaultHeight);
+	const height = useCoverHeight(coverRef, defaultHeight);
 
 	return (
 		<div className={style.hero}>
